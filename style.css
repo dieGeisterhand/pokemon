@@ -1,0 +1,141 @@
+:root {
+  --body-color: rgb(73, 71, 134);
+  --screen: rgb(196, 190, 187);
+  --bezel: rgb(39, 41, 41);
+  --highlight: rgba(255, 255, 255, 0.1);
+  --body-text:rgb(43, 42, 83);
+}
+
+body {
+  background-color: var(--body-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.empty-space {
+  display: flex;
+  z-index: 1;
+  width: 20%; 
+  height: 100%;
+  background-color: black;
+}
+
+.highlight1 {
+  display: flex;
+  position: absolute;
+  left: 12%;
+  width: 20%;
+  height: 100%;
+  background-color: var(--highlight);
+}
+
+.highlight2 {
+  display: flex;
+  position: absolute;
+  left: 68%;
+  width: 20%;
+  height: 100%;
+  background-color: var(--highlight);
+}
+
+.comms-input {
+  display: flex;
+  z-index: 2;
+  position: absolute;
+  color: var(--body-text);
+  left: 35%;
+  top: 0;
+  padding: 0.5% 0 0 0;
+  font-size: 2.5vh;
+  font-weight: bold;
+}
+
+.screen-bezel {
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  width: 50%; /* Adjust this percentage as needed */
+  height: 80vh; /* Adjust this percentage as needed */
+  background-color: var(--bezel);
+  border-radius: 5% 5% 50% 50% / 5% 5% 3% 3%; /* Adjust these percentages as needed */
+}
+
+.power-led {
+  position: absolute;
+  left: 29.5%;
+  top: 40%;
+  height: 2vh;
+  width: 2vh;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Center precisely */
+
+}
+
+.glow {
+  color: red;
+  box-shadow: 0px 0px 20px red;
+}
+
+.power-led-parenthesis {
+  position: absolute;
+  left: 31%;
+  top: 38.8%;
+}
+
+.power-led-text {
+  position: absolute;
+  left: 29%;
+  top: 42%;
+
+}
+
+.power-led-text, .power-led-parenthesis {
+  font-size: 2vh;
+  color: white;
+}
+
+.screen {
+  width: 60%; /* Adjust this percentage as needed */
+  height: 60%; /* Adjust this percentage as needed */
+  background-color: var(--screen);
+}
+
+.gameboy-logo {
+  display: flex;
+  position: absolute;
+  color: var(--screen);
+  font-style: italic;
+  padding: 33% 0 0 0;
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.gameboy-logo span {
+  font-style: normal;
+}
+
+.c {
+  color: rgb(157, 12, 70);
+}
+
+.o {
+  color: rgb(110, 112, 175);
+}
+
+.l {
+  color: rgb(137, 172, 67);
+}
+
+.second-o {
+  color: rgb(209, 175, 44);
+}
+
+.r {
+  color: rgb(27, 147, 137);
+}
