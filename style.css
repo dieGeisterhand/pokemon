@@ -13,7 +13,8 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
 }
 
 .empty-space {
