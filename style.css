@@ -59,10 +59,10 @@ body {
   z-index: 1;
   justify-content: center;
   align-items: center;
-  width: 50%; /* Adjust this percentage as needed */
-  height: 80vh; /* Adjust this percentage as needed */
+  width: 50%; 
+  height: 80vh; 
   background-color: var(--bezel);
-  border-radius: 5% 5% 50% 50% / 5% 5% 3% 3%; /* Adjust these percentages as needed */
+  border-radius: 5% 5% 50% 50% / 5% 5% 3% 3%;
 }
 
 .power-led {
@@ -73,7 +73,7 @@ body {
   width: 2vh;
   background-color: red;
   border-radius: 50%;
-  transform: translate(-50%, -50%); /* Center precisely */
+  transform: translate(-50%, -50%); 
 
 }
 
@@ -101,8 +101,8 @@ body {
 }
 
 .screen {
-  width: 60%; /* Adjust this percentage as needed */
-  height: 60%; /* Adjust this percentage as needed */
+  width: 60%;
+  height: 60%;
   background-color: var(--screen);
 }
 
