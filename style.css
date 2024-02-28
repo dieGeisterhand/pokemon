@@ -140,8 +140,3 @@ body {
 .r {
   color: rgb(27, 147, 137);
 }
-/*iframe is being used as a placeholder atm*/
-iframe {
-  width: 100%;
-  height: 100%;
-}
