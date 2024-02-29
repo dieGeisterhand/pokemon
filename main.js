@@ -13,4 +13,28 @@ const consoleColor = document.documentElement;
 //setting value of --body-color css variable
 consoleColor.style.setProperty('--body-color', colors[randomColor]);
 
+// game functions
 
+const action = document.getElementById("left-button");
+const option = document.getElementById("right-button");
+const titleText = document.getElementById("main-text");
+
+
+function mainScreen() {
+  titleText.innerText = "POKEMON BATTLE";
+  action.innerText = "PLAY";
+
+  option.innerText = "ABOUT";
+  option.setAttribute("onclick", "about()");
+};
+
+function about() {
+  titleText.innerText = "This is POKEMON BATTLE. Use the 'ATTACK' button to make your POKEMON use a random attack. With ITEMS, you can use a random ITEM to heal them. Your opponent, your POKEMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!";
+  option.innerText = "RETURN";
+  action.innerText = "";
+  option.setAttribute("onclick", "mainScreen()");
+};
+
+window.onload = function() {
+  mainScreen();
+};
