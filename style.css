@@ -6,6 +6,11 @@
   --body-text:rgba(22, 22, 22, 0.5);
 }
 
+@font-face {
+  font-family: PokemonGb-RAeo;
+  src: url(./assets/font/PokemonGb-RAeo.ttf);
+}
+
 body {
   background-color: var(--body-color);
   display: flex;
@@ -104,11 +109,11 @@ body {
 
 .screen {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 60%;
   height: 60%;
   background-color: var(--screen);
+  font-family: pokemonGb-RAeo;
 }
 
 .gameboy-logo {
@@ -145,7 +150,77 @@ body {
   color: rgb(27, 147, 137);
 }
 
-.placeholder {
-  font-size: 4vh;
+.game-space {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 3vh;
   font-weight: bold;
+  padding: 5%;
+}
+
+.bottom-menu {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: row;
+  margin-top: auto;
+  height: 35%;
+  width: 100%;
+  font-size: 3vh;
+  border-top: dotted 0.25vh black;
+}
+
+.left-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border-right: dotted 0.25vh black
+}
+
+.right-menu {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-space-top {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: 100%;
+}
+
+.game-space-bottom {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  width: 100%;
+}
+
+.game-space-top-left,
+.game-space-top-right,
+.game-space-bottom-left,
+.game-space-bottom-right {
+  width: 50%;
+  height: 100%;
+
+}
+
+
+.game-space-top-left {
+  background-color: red;
+}
+
+.game-space-top-right {
+  background-color: aquamarine;
+}
+
+.game-space-bottom-left {
+  background-color: blue;
+}
+
+.game-space-bottom-right {
+  background-color: chartreuse;
 }
