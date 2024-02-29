@@ -1,9 +1,9 @@
 :root {
-  --body-color: rgb(73, 71, 134);
+  --body-color: ;
   --screen: rgb(196, 190, 187);
   --bezel: rgb(39, 41, 41);
   --highlight: rgba(255, 255, 255, 0.1);
-  --body-text:rgb(43, 42, 83);
+  --body-text:rgba(22, 22, 22, 0.5);
 }
 
 body {
@@ -53,6 +53,7 @@ body {
   padding: 0.5% 0 0 0;
   font-size: 2.5vh;
   font-weight: bold;
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.25);
 }
 
 .screen-bezel {
@@ -102,6 +103,9 @@ body {
 }
 
 .screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 60%;
   height: 60%;
   background-color: var(--screen);
@@ -134,9 +138,14 @@ body {
 }
 
 .second-o {
-  color: rgb(209, 175, 44);
+  color: rgb(209, 175, 44);t
 }
 
 .r {
   color: rgb(27, 147, 137);
+}
+
+.placeholder {
+  font-size: 4vh;
+  font-weight: bold;
 }
