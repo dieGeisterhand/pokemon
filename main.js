@@ -1,3 +1,4 @@
+// colors to choose from, obviously
 const colors = [
   "rgb(157, 12, 70)",
   "rgb(73, 71, 134)",
@@ -5,9 +6,11 @@ const colors = [
   "rgb(209, 175, 44)",
   "rgb(27, 147, 137)"
 ]
-
+// pick random color
 const randomColor = Math.floor(Math.random() * colors.length);
 // targetting root in order to get its assigned variables
 const consoleColor = document.documentElement;
 //setting value of --body-color css variable
 consoleColor.style.setProperty('--body-color', colors[randomColor]);
+
+
