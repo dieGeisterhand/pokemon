@@ -18,11 +18,19 @@ consoleColor.style.setProperty('--body-color', colors[randomColor]);
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 const titleText = document.getElementById("main-text");
+const yourPokemon = document.getElementById("game-space-bottom-left");
+const opponentPokemon = document.getElementById("game-space-top-right");
+
+
+
+
 
 
 function mainScreen() {
   titleText.innerText = "POKÉMON BATTLE";
+
   action.innerText = "PLAY";
+  action.setAttribute("onclick", "play()");
 
   option.innerText = "ABOUT";
   option.setAttribute("onclick", "about()");
@@ -34,6 +42,21 @@ function about() {
   action.innerText = "";
   option.setAttribute("onclick", "mainScreen()");
 };
+
+function play() {
+  titleText.innerText = "";
+
+  action.innerText = "ATTACK";
+  action.setAttribute("onclick", "attack()");
+
+  option.innerText = "ITEM";
+  option.setAttribute("onclick", "item()");
+
+
+}
+
+function attack(){};
+function item(){};
 
 window.onload = function() {
   mainScreen();
