@@ -153,6 +153,8 @@ body {
 .game-space {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   font-size: 3vh;
   font-weight: bold;
@@ -207,22 +209,12 @@ body {
 }
 
 
-.game-space-top-left {
-  background-color: red;
-  margin-right: 1%;
-}
-
-.game-space-top-right {
-  background-color: aquamarine;
-  margin-left: 1%;
-}
-
+.game-space-top-left,
 .game-space-bottom-left {
-  background-color: blue;
   margin-right: 1%;
 }
 
+.game-space-top-right,
 .game-space-bottom-right {
-  background-color: chartreuse;
   margin-left: 1%;
 }
