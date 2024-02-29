@@ -158,7 +158,6 @@ body {
   justify-content: center;
   align-items: center;
   line-height: 130%;
-  padding: 5% 5% 0 5%;
   height: 80%;
 
 }
@@ -192,10 +191,9 @@ body {
 .game-space-bottom {
   display: flex;
   flex-direction: row;
-  height: 50%;
+  height: 45%;
   width: 100%;
   box-sizing: border-box;
-  margin: 1% 0;
 }
 
 .game-space-top-left,
@@ -209,15 +207,11 @@ body {
   height: 100%;
 }
 
-
-.game-space-top-left,
-.game-space-bottom-left {
-  margin-right: 1%;
-}
-
-.game-space-top-right,
-.game-space-bottom-right {
-  margin-left: 1%;
+.pokemon {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  object-fit: contain;
 }
 
 .game-space-text {

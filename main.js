@@ -18,8 +18,11 @@ consoleColor.style.setProperty('--body-color', colors[randomColor]);
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 const titleText = document.getElementById("main-text");
-const yourPokemon = document.getElementById("game-space-bottom-left");
-const opponentPokemon = document.getElementById("game-space-top-right");
+const yourPokemon = document.getElementById("image-container-bottom");
+const opponentPokemon = document.getElementById("image-container-top");
+const userName = document.getElementById("your-name");
+
+
 
 
 
@@ -52,6 +55,8 @@ function play() {
   option.innerText = "ITEM";
   option.setAttribute("onclick", "item()");
 
+  yourPokemon.setAttribute("src", "./1.png");
+  opponentPokemon.setAttribute("src", "./2.png")
 
 }
 
