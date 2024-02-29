@@ -29,7 +29,7 @@ function mainScreen() {
 };
 
 function about() {
-  titleText.innerText = "This is POKEMON BATTLE. Use the 'ATTACK' button to make your POKEMON use a random attack. With ITEMS, you can use a random ITEM to heal them. Your opponent, your POKEMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!";
+  titleText.innerText = "This is POKEMON BATTLE. Use the 'ATTACK' button to make your POKEMON use a random attack. With ITEM, you can use a random ITEM to heal them. Your opponent, your POKEMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!";
   option.innerText = "RETURN";
   action.innerText = "";
   option.setAttribute("onclick", "mainScreen()");
