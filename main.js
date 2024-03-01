@@ -116,7 +116,7 @@ function userDamageCalc() {
 };
 
 function defaultText() {
-  titleText.innerText = "what would PIDGEY do now?"
+  titleText.innerText = "What would PIDGEY do now?"
   return;
 }
 
