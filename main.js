@@ -22,7 +22,6 @@ const aboutText = document.getElementById("about-text");
 const userPokemonImg = document.getElementById("image-container-bottom");
 const opponentPokemonImg = document.getElementById("image-container-top");
 const userName = document.getElementById("your-name");
-const currentEvent = document.getElementById("current-event");
 const userHpTitle = document.getElementById("hp-text");
 const computerHpTitle = document.getElementById("computer-hp-text");
 const computerName = document.getElementById("computer-name");
@@ -61,8 +60,6 @@ function about() {
 
 function play() {
   titleText.innerText = "What would PIDGEY do now?";
-
-  currentEvent.classList.add('current-event');
 
   action.innerText = "ATTACK";
   action.setAttribute("onclick", "attack()");
