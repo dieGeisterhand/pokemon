@@ -91,45 +91,9 @@ function play() {
 };
 
 function attack() {
-  action.removeAttribute("onclick", "attack()");
-  option.removeAttribute("onclick", "item()");
-  titleText.innerText = "PIDGEY used GUST!"
-  setTimeout(damageCalc, 2000);
-  setTimeout(computerMove, 4000);
-  setTimeout(userDamageCalc, 6000);
-  setTimeout(checkFaint, 9000);
-  setTimeout(action.setAttribute("onclick", "attack()"), 11000);
-  setTimeout(option.setAttribute("onclick", "item()"), 11000);
+  titleText.innerText = "Work in progress!"
   return;
 };
-
-function damageCalc() {
-  currentOpponentHp.innerText -= 3;
-  titleText.innerText = "NIDORAN♂ takes damage!";
-  setTimeout(checkFaint, 9000);
-  return;
-};
-
-function computerMove() {
-  titleText.innerText = "NIDORAN♂ used QUICK ATTACK!";
-  return;
-}
-
-function userDamageCalc() {
-  currentUserHp.innerText -= 4;
-  titleText.innerText = "PIDGEY takes damage!";
-};
-
-function checkFaint() {
-  if (currentOpponentHp <= 0) {
-    titleText.innerText = "NIDORAN♂ faints!";
-  } else if (currentUserHp <= 0) {
-    titleText.innerText = "PIDGEY faints!";
-  } else {
-    titleText.innerText = "What would PIDGEY do now?"
-    return;
-  }
-}
 
 function item(){};
 
