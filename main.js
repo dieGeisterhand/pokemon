@@ -21,7 +21,7 @@ const titleText = document.getElementById("main-text");
 const yourPokemon = document.getElementById("image-container-bottom");
 const opponentPokemon = document.getElementById("image-container-top");
 const userName = document.getElementById("your-name");
-
+const currentEvent = document.getElementById("current-event");
 
 
 
@@ -56,7 +56,9 @@ function play() {
   option.setAttribute("onclick", "item()");
 
   yourPokemon.setAttribute("src", "./1.png");
-  opponentPokemon.setAttribute("src", "./2.png")
+  opponentPokemon.setAttribute("src", "./2.gif")
+
+  currentEvent.classList.add('current-event');
 
 }
 

@@ -203,7 +203,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 49%;
+  width: 50%;
   height: 100%;
 }
 
@@ -215,5 +215,22 @@ body {
 }
 
 .game-space-text {
+  margin: 0;
+  padding: 5%;
+}
+
+.current-event {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  width: 100%;
+  height: 10%;
+  border-top: dotted 0.25vh black;
+}
+
+.current-event-text {
   margin: 0;
 }
