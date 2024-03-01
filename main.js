@@ -18,13 +18,19 @@ consoleColor.style.setProperty('--body-color', colors[randomColor]);
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 const titleText = document.getElementById("main-text");
-const yourPokemon = document.getElementById("image-container-bottom");
-const opponentPokemon = document.getElementById("image-container-top");
+const userPokemonImg = document.getElementById("image-container-bottom");
+const opponentPokemonImg = document.getElementById("image-container-top");
 const userName = document.getElementById("your-name");
 const currentEvent = document.getElementById("current-event");
-
-
-
+const userHpTitle = document.getElementById("hp-text");
+const computerHpTitle = document.getElementById("computer-hp-text");
+const computerName = document.getElementById("computer-name");
+const currentOpponentHp = document.getElementById("computer-current-hp");
+const currentUserHp = document.getElementById("user-current-hp");
+const divisionBottom = document.getElementById("health-division-bottom");
+const divisionTop = document.getElementById("health-division-top");
+const userMaxHp = document.getElementById("user-max-hp");
+const computerMaxHp = document.getElementById("computer-max-hp");
 
 
 
@@ -57,8 +63,26 @@ function play() {
   option.innerText = "ITEM";
   option.setAttribute("onclick", "item()");
 
-  yourPokemon.setAttribute("src", "./1.png");
-  opponentPokemon.setAttribute("src", "./2.gif")
+  userPokemonImg.setAttribute("src", "./1.png");
+  opponentPokemonImg.setAttribute("src", "./2.gif")
+
+  userName.innerText = "PIDGEY";
+  computerName.innerText = "NIDORAN";
+
+  userHpTitle.innerText = "HP:";
+  computerHpTitle.innerText = "HP:";
+
+  currentUserHp.innerText = "19";
+  currentOpponentHp.innerText = "21";
+
+  divisionTop.innerText = "/";
+  divisionBottom.innerText = "/";
+
+  userMaxHp.innerText = "19";
+  computerMaxHp.innerText = "21";
+
+
+
 }
 
 function attack(){};
