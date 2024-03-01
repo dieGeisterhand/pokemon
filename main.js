@@ -49,6 +49,8 @@ function about() {
 function play() {
   titleText.innerText = "";
 
+  currentEvent.classList.add('current-event');
+
   action.innerText = "ATTACK";
   action.setAttribute("onclick", "attack()");
 
@@ -57,9 +59,6 @@ function play() {
 
   yourPokemon.setAttribute("src", "./1.png");
   opponentPokemon.setAttribute("src", "./2.gif")
-
-  currentEvent.classList.add('current-event');
-
 }
 
 function attack(){};

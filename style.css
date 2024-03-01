@@ -234,3 +234,13 @@ body {
 .current-event-text {
   margin: 0;
 }
+
+.user-stats {
+  margin-left: -70%;
+  margin-bottom: -20%;
+}
+
+.computer-stats {
+  margin-right: -70%;
+}
+
