@@ -18,6 +18,7 @@ consoleColor.style.setProperty('--body-color', colors[randomColor]);
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 const titleText = document.getElementById("main-text");
+const aboutText = document.getElementById("about-text");
 const userPokemonImg = document.getElementById("image-container-bottom");
 const opponentPokemonImg = document.getElementById("image-container-top");
 const userName = document.getElementById("your-name");
@@ -43,17 +44,23 @@ function mainScreen() {
 
   option.innerText = "ABOUT";
   option.setAttribute("onclick", "about()");
+  
+  aboutText.innerText = "";
 };
 
 function about() {
-  titleText.innerText = "This is POKÉMON BATTLE. Use the ATTACK button to make your POKÉMON use a random attack. With ITEM, you can use a random ITEM to heal them. Your opponent, your POKÉMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!";
-  option.innerText = "RETURN";
+  titleText.innerText = "";
+  aboutText.innerText = "This is POKÉMON BATTLE. Use the ATTACK button to make your POKÉMON use a random attack. With ITEM, you can use a random ITEM to heal them. Your opponent, your POKÉMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!";
+  
   action.innerText = "";
+  action.removeAttribute("onclick");
+
+  option.innerText = "RETURN";
   option.setAttribute("onclick", "mainScreen()");
 };
 
 function play() {
-  titleText.innerText = "";
+  titleText.innerText = "What would PIDGEY do now?";
 
   currentEvent.classList.add('current-event');
 
@@ -67,7 +74,7 @@ function play() {
   opponentPokemonImg.setAttribute("src", "./2.gif")
 
   userName.innerText = "PIDGEY";
-  computerName.innerText = "NIDORAN";
+  computerName.innerText = "NIDORAN♂";
 
   userHpTitle.innerText = "HP:";
   computerHpTitle.innerText = "HP:";

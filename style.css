@@ -169,7 +169,7 @@ body {
   margin-top: auto;
   height: 20%;
   width: 100%;
-  border-top: dotted 0.25vh black;
+  border-top: solid 0.35vh black;
 }
 
 .left-menu {
@@ -177,7 +177,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 50%;
-  border-right: dotted 0.25vh black
+  border-right: solid 0.35vh black
 }
 
 .right-menu {
@@ -215,23 +215,22 @@ body {
 }
 
 .game-space-text {
+  position: absolute;
   margin: 0;
-  padding: 5%;
+  padding: 1%;
+  height: fit-content;
 }
 
-.current-event {
+.game-space-text-about {
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1%;
-  width: 100%;
-  height: 10%;
-  border-top: dotted 0.25vh black;
+  padding: 3%;
+  height: fit-content;
 }
+
 
 .current-event-text {
+  position: absolute;
+  height: 50%;
   margin: 0;
 }
 
@@ -243,3 +242,4 @@ body {
 .computer-stats {
   margin-right: -70%;
 }
+
