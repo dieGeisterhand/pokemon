@@ -228,9 +228,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-#main-text {
-  margin: 5%;
-}
+
 
 #computer-hp-text, 
 #hp-text {

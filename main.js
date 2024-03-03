@@ -58,6 +58,21 @@ const pokemon = [
   }
 ];
 
+const itemList = [
+  {
+    name: "POTION",
+    points: 10
+  },
+  {
+    name: "BERRY",
+    points: 5
+  },
+  {
+    name: "HERBAL MEDICINE",
+    points: 2.5
+  }
+];
+
 
 const gameScreen = [
   {
@@ -78,7 +93,7 @@ const gameScreen = [
     button_text: ["ATTACK", "ITEM"],
     button_functions: [attack, item]
   }
-]
+];
 
 
 const randomNumberUser = Math.floor(Math.random() * pokemon.length);
@@ -121,7 +136,7 @@ function game() {
   currentOpponentHp.innerText = pokemon[randomNumberOpponent]["base_hp"];
   computerMaxHp.innerText = ` / ${pokemon[randomNumberOpponent]["base_hp"]}`;
   userTurn();
-}
+};
 
 
 function nextTurn() {
@@ -131,7 +146,7 @@ function nextTurn() {
   } else {
     opponentTurn();
   }
-}
+};
 
 
 function userTurn() {
@@ -139,18 +154,71 @@ function userTurn() {
   action.setAttribute("onclick", "attack()");
 
   option.innerText = gameScreen[2]["button_text"][1];
-  option.setAttribute("onclick", "");
+  option.setAttribute("onclick", "item()");
 
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
-}
+};
+
+const dmgRandom = Math.floor(Math.random() * 4) + 1
+
+function opponentTurn() {
+  action.innerText = "";
+  action.removeAttribute("onclick");
+  option.innerText = "";
+  option.removeAttribute("onclick");
+
+  const move = Math.floor(Math.random() * itemList.length);
+  mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} used ${pokemon[randomNumberOpponent]["moves"][move]}!`;
+
+  
+
+  function damageCalc() {
+    mainText.innerText = `${pokemon[randomNumberUser]["name"]} takes damage!`;
+
+    let currentHealth = Number(currentUserHp.innerText);
+    let newHealth = currentHealth - (Math.floor(Math.random() * 3) + 1);
+    
+    newHealth = Math.max(newHealth, 0);
+
+    currentUserHp.innerText = newHealth;
+
+    if (newHealth === 0) {
+      mainText.innerText = `${pokemon[randomNumberUser]["name"]} fainted!`;
+      userPokemonImg.removeAttribute("src");
+    } 
+    return;
+  }
+
+  setTimeout(damageCalc, 2000);
+  setTimeout(nextTurn, 4000);
+
+};
+
+function attack() {};
+function opponentAttack() {};
+
+
+function item() {
+  const randomNumber = Math.floor(Math.random() * itemList.length);
+  mainText.innerText = `You've used ${itemList[randomNumber]["name"]}!`;
+
+  function healthRecovery() {
+    const healingItem = itemList[randomNumber]["points"];
+    mainText.innerText = `${pokemon[randomNumberUser]["name"]} recovered ${itemList[randomNumber]["points"]} HP!`;
+
+    let currentHealth = Number(currentUserHp.innerText);
+    let newHealth = currentHealth + healingItem;
+  
+    newHealth = Math.min(newHealth, pokemon[randomNumberUser]["base_hp"]);
+    currentUserHp.innerText = newHealth;
+  };
+
+  setTimeout(healthRecovery, 2000);
+  setTimeout(nextTurn, 4000);
+};
 
 
 
-function opponentTurn() {}
-
-
-function attack() {}
-function item() {}
 
 window.onload = function() {
   mainScreen();
