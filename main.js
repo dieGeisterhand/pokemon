@@ -35,8 +35,6 @@ const computerHpTitle = document.getElementById("computer-hp-text");
 const currentOpponentHp = document.getElementById("computer-current-hp");
 const computerMaxHp = document.getElementById("computer-max-hp");
 
-
-
 const pokemon = [
   {
     name: "PIDGEY",
@@ -55,7 +53,99 @@ const pokemon = [
     sprite: ["./assets/pokemon-sprites/magikarp-back.png", "./assets/pokemon-sprites/magikarp-front.png"],
     base_hp: 20,
     moves: ["SPLASH", "SPLASH", "SPLASH", "HYPER BEAM"],
+  },
+  {
+    name: "ABRA",
+    sprite: ["./assets/pokemon-sprites/abra-back.png", "./assets/pokemon-sprites/abra-front.png"],
+    base_hp: 11,
+    moves: ["BODY SLAM", "TOXIC", "PSYWAVE", "TRI ATTACK"]
+  },
+  {
+    name: "CATERPIE",
+    sprite: ["./assets/pokemon-sprites/caterpie-back.png", "./assets/pokemon-sprites/caterpie-front.png"],
+    base_hp: 7,
+    moves: ["TACKLE", "STRING SHOT"]
+  },
+  {
+    name: "CHARMANDER",
+    sprite: ["./assets/pokemon-sprites/charmander-back.png", "./assets/pokemon-sprites/charmander-front.png"],
+    base_hp: 11,
+    moves: ["EMBER", "SCRATCH", "LEER", "SLASH"]
+  },
+  {
+    name: "CLEFAIRY",
+    sprite: ["./assets/pokemon-sprites/clefairy-back.png", "./assets/pokemon-sprites/clefairy-front.png"],
+    base_hp: 10,
+    moves: ["GROWL", "DOUBLESLAP", "POUND"]
+  },
+  {
+    name: "MAGNEMITE",
+    sprite: ["./assets/pokemon-sprites/magnemite-back.png", "./assets/pokemon-sprites/magnemite-front.png"],
+    base_hp: 12,
+    moves: ["THUNDERSHOCK", "TACKLE", "SONIC BOOM"]
+
+  },
+  {
+    name: "NIDORAN♂",
+    sprite: ["./assets/pokemon-sprites/nidoran-back.png", "./assets/pokemon-sprites/nidoran-front.png"],
+    base_hp: 13,
+    moves: ["HORN ATTACK", "TACKLE"]
+  },
+  {
+    name: "OMANYTE",
+    sprite: ["./assets/pokemon-sprites/omanyte-back.png", "./assets/pokemon-sprites/omanyte-front.png"],
+    base_hp: 14,
+    moves: ["WATER GUN", "LEER", "HYDRO PUMP"]
+  },
+  {
+    name: "PARAS",
+    sprite: ["./assets/pokemon-sprites/paras-back.png", "./assets/pokemon-sprites/paras-front.png"],
+    base_hp: 10,
+    moves: ["SCRATCH", "LEECH LIFE", "SPORE"]
+  },
+  {
+    name: "PSYDUCK",
+    sprite: ["./assets/pokemon-sprites/psyduck-back.png", "./assets/pokemon-sprites/psyduck-front.png"],
+    base_hp: 11,
+    moves: ["SCRATCH", "FURY SWIPES", "CONFUSION"]
+  },
+  {
+    name: "RHYHORN",
+    sprite: ["./assets/pokemon-sprites/rhyhorn-back.png", "./assets/pokemon-sprites/rhyhorn-front.png"],
+    base_hp: 17,
+    moves: ["STOMP", "HORN DRILL", "TAKE DOWN"]
+  },
+  {
+    name: "SANDSHREW",
+    sprite: ["./assets/pokemon-sprites/sandshrew-back.png", "./assets/pokemon-sprites/sandshrew-front.png"],
+    base_hp: 12,
+    moves: ["SCRATCH", "SLASH", "POISON STING"]
+  },
+  {
+    name: "SEEL",
+    sprite: ["./assets/pokemon-sprites/seel-back.png", "./assets/pokemon-sprites/seel-front.png"],
+    base_hp: 14,
+    moves: ["ICE BEAM", "HEADBUTT", "TAKE DOWN"]
+  },
+  {
+    name: "SHELLDER",
+    sprite: ["./assets/pokemon-sprites/shellder-back.png", "./assets/pokemon-sprites/shellder-front.png"],
+    base_hp: 8,
+    moves: ["CLAMP", "ICE BEAM", "TACKLE"]
+  },
+  {
+    name: "VOLTORB",
+    sprite: ["./assets/pokemon-sprites/voltorb-back.png", "./assets/pokemon-sprites/voltorb-front.png"],
+    base_hp: 13,
+    moves: ["SCREECH", "SWIFT", "THUNDERBOLT"]
+  },
+  {
+    name: "VULPIX",
+    sprite: ["./assets/pokemon-sprites/vulpix-back.png", "./assets/pokemon-sprites/vulpix-front.png"],
+    base_hp: 10,
+    moves: ["EMBER", "SCRATCH", "QUICK ATTACK"]
   }
+
 ];
 
 const itemList = [
@@ -72,7 +162,6 @@ const itemList = [
     points: 2
   }
 ];
-
 
 const gameScreen = [
   {
@@ -101,6 +190,19 @@ const gameScreen = [
   }
 ];
 
+function mainScreen() {
+  mainText.innerText = gameScreen[0]["main_text"];
+
+  action.innerText = gameScreen[0]["button_text"][0];
+  action.onclick = function () {
+    game();
+  };
+
+  option.innerText = gameScreen[0]["button_text"][1];
+  option.onclick = function () {
+    about();
+  };
+}
 
 const randomNumberUser = Math.floor(Math.random() * pokemon.length);
 const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
@@ -110,12 +212,15 @@ function mainScreen() {
   mainText.innerText = gameScreen[0]["main_text"];
 
   action.innerText = gameScreen[0]["button_text"][0];
-  action.setAttribute("onclick", "game()");
+  action.onclick = function () {
+    game();
+  };
 
   option.innerText = gameScreen[0]["button_text"][1];
-  option.setAttribute("onclick", "about()");
-};
-
+  option.onclick = function () {
+    about();
+  };
+}
 function about() {
   mainText.innerText = gameScreen[1]["main_text"];
   action.innerText = gameScreen[1]["button_text"][0];
@@ -126,7 +231,6 @@ function about() {
 };
 
 function game() {
-
 
   userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
   opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
@@ -144,17 +248,20 @@ function game() {
   userTurn();
 };
 
-
 function nextTurn() {
   if (turn === 0) {
     turn += 1;
+    console.log("user turn end");
+    console.log("opponent turn start");
     opponentTurn();
+
   } else if (turn === 1) {
     turn -= 1;
+    console.log("opponent turn end");
+    console.log("user turn start");
     userTurn();
   }
 };
-
 
 function userTurn() {
   action.innerText = gameScreen[2]["button_text"][0];
@@ -166,7 +273,7 @@ function userTurn() {
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
 };
 
-const dmgRandom = Math.floor(Math.random() * 3) + 1
+
 
 function opponentTurn() {
   action.innerText = "";
@@ -174,13 +281,13 @@ function opponentTurn() {
   option.innerText = "";
   option.removeAttribute("onclick");
 
-  const move = Math.floor(Math.random() * 4);
+  const move = Math.floor(Math.random() * pokemon[randomNumberOpponent]["moves"].length);
   mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} used ${pokemon[randomNumberOpponent]["moves"][move]}!`;
 
-  
-
   function damageCalc() {
-
+    console.log("opponent-dmg-calc");
+    const dmgRandom = Math.floor(Math.random() * 3) + 1;
+    console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberOpponent]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} splashed around!`
       setTimeout(nextTurn, 2000);
@@ -191,7 +298,7 @@ function opponentTurn() {
       let newHealth = currentHealth - dmgRandom;
       
       newHealth = Math.max(newHealth, 0);
-    
+
       currentUserHp.innerText = newHealth;
     
       return newHealth;
@@ -205,14 +312,14 @@ function opponentTurn() {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} faints!`;
       userPokemonImg.removeAttribute("src");
       setTimeout(gameOver, 2000);
-    } else if (resultHealth > 1) {
+    } else if (resultHealth >= 1) {
       setTimeout(nextTurn, 2000);
     }
   }, 1000);
 };
 
 function attack() {
-  const move = Math.floor(Math.random() * 4);
+  const move = Math.floor(Math.random() * pokemon[randomNumberUser]["moves"].length);
   mainText.innerText = `${pokemon[randomNumberUser]["name"]} used ${pokemon[randomNumberUser]["moves"][move]}!`;
   action.innerText = "";
   action.removeAttribute("onclick");
@@ -220,7 +327,9 @@ function attack() {
   option.removeAttribute("onclick");
 
   function damageCalc() {
-
+    console.log("user-dmg-calc");
+    const dmgRandom = Math.floor(Math.random() * 3) + 1;
+    console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberUser]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} splashed around!`
       setTimeout(nextTurn, 2000);
@@ -233,11 +342,10 @@ function attack() {
       newHealth = Math.max(newHealth, 0);
     
       currentOpponentHp.innerText = newHealth;
-    
+
       return newHealth;
     }
   }
-
 
   setTimeout(() => {
     const resultHealth = damageCalc();
@@ -246,13 +354,11 @@ function attack() {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} faints!`;
       opponentPokemonImg.removeAttribute("src");
       setTimeout(gameOver, 2000);
-    } else if (resultHealth > 1) {
+    } else if (resultHealth >= 1) {
       setTimeout(nextTurn, 2000);
     }
   }, 1000);
 };
-
-
 
 function item() {
   const randomNumber = Math.floor(Math.random() * itemList.length);
