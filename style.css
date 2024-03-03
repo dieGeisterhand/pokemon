@@ -243,3 +243,7 @@ body {
   margin-right: -70%;
 }
 
+#computer-hp-text, 
+#hp-text {
+  display: none;
+}

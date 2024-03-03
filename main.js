@@ -15,6 +15,8 @@ consoleColor.style.setProperty('--body-color', colors[randomColor]);
 
 // game functions
 
+let turn = 0;
+
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 
@@ -27,13 +29,13 @@ const userName = document.getElementById("your-name");
 const userHpTitle = document.getElementById("hp-text");
 const currentUserHp = document.getElementById("user-current-hp");
 const userMaxHp = document.getElementById("user-max-hp");
-const divisionBottom = document.getElementById("health-division-bottom");
 
 const computerName = document.getElementById("computer-name");
 const computerHpTitle = document.getElementById("computer-hp-text");
 const currentOpponentHp = document.getElementById("computer-current-hp");
 const computerMaxHp = document.getElementById("computer-max-hp");
-const divisionTop = document.getElementById("health-division-top");
+
+
 
 const pokemon = [
   {
@@ -56,12 +58,13 @@ const pokemon = [
   }
 ];
 
+
 const gameScreen = [
   {
     name: "main screen",
     main_text: "POKÉMON BATTLE",
     button_text: ["PLAY", "ABOUT"],
-    button_functions: [play, about]
+    button_functions: [game, about]
   },
   {
     name: "about",
@@ -78,15 +81,18 @@ const gameScreen = [
 ]
 
 
+const randomNumberUser = Math.floor(Math.random() * pokemon.length);
+const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
+
+
 function mainScreen() {
   mainText.innerText = gameScreen[0]["main_text"];
 
   action.innerText = gameScreen[0]["button_text"][0];
-  action.setAttribute("onclick", "play()");
+  action.setAttribute("onclick", "game()");
 
   option.innerText = gameScreen[0]["button_text"][1];
   option.setAttribute("onclick", "about()");
-  
 };
 
 function about() {
@@ -98,21 +104,49 @@ function about() {
   option.setAttribute("onclick", "mainScreen()");
 };
 
-function play() {
+function game() {
+
+
+  userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
+  opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
+
+  userHpTitle.style.display = "flex";
+  computerHpTitle.style.display = "flex";
+
+  userName.innerText = pokemon[randomNumberUser]["name"];
+  currentUserHp.innerText = pokemon[randomNumberUser]["base_hp"];
+  userMaxHp.innerText = ` / ${pokemon[randomNumberUser]["base_hp"]}`;
+
+  computerName.innerText = pokemon[randomNumberOpponent]["name"];
+  currentOpponentHp.innerText = pokemon[randomNumberOpponent]["base_hp"];
+  computerMaxHp.innerText = ` / ${pokemon[randomNumberOpponent]["base_hp"]}`;
+  userTurn();
+}
+
+
+function nextTurn() {
+  turn -= 1;
+  if (turn === 0) {
+    userTurn();
+  } else {
+    opponentTurn();
+  }
+}
+
+
+function userTurn() {
   action.innerText = gameScreen[2]["button_text"][0];
   action.setAttribute("onclick", "attack()");
 
   option.innerText = gameScreen[2]["button_text"][1];
   option.setAttribute("onclick", "");
 
-  const randomNumberUser = Math.floor(Math.random() * pokemon.length);
-  const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
-
-  userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
-  opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
-
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
 }
+
+
+
+function opponentTurn() {}
 
 
 function attack() {}
