@@ -140,11 +140,12 @@ function game() {
 
 
 function nextTurn() {
-  turn -= 1;
   if (turn === 0) {
-    userTurn();
-  } else {
+    turn += 1;
     opponentTurn();
+  } else if (turn === 1) {
+    turn -= 1;
+    userTurn();
   }
 };
 
@@ -194,8 +195,35 @@ function opponentTurn() {
 
 };
 
-function attack() {};
-function opponentAttack() {};
+function attack() {
+  const move = Math.floor(Math.random() * itemList.length);
+  mainText.innerText = `${pokemon[randomNumberUser]["name"]} used ${pokemon[randomNumberUser]["moves"][move]}!`;
+  action.innerText = "";
+  action.removeAttribute("onclick");
+  option.innerText = "";
+  option.removeAttribute("onclick");
+
+  function damageCalc() {
+    mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} takes damage!`;
+
+    let currentHealth = Number(currentOpponentHp.innerText);
+    let newHealth = currentHealth - (Math.floor(Math.random() * 3) + 1);
+    
+    newHealth = Math.max(newHealth, 0);
+
+    currentOpponentHp.innerText = newHealth;
+
+    if (newHealth === 0) {
+      mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} fainted!`;
+      opponentPokemonImg.removeAttribute("src");
+    } 
+    return;
+  }
+
+  setTimeout(damageCalc, 2000);
+  setTimeout(nextTurn, 4000);
+};
+
 
 
 function item() {
