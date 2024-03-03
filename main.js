@@ -38,110 +38,110 @@ const computerMaxHp = document.getElementById("computer-max-hp");
 const pokemon = [
   {
     name: "PIDGEY",
-    sprite: ["./assets/pokemon-sprites/pidgey-back.png", "./assets/pokemon-sprites/pidgey-front.png"],
+    sprite: ["./assets/pokemon-sprites/pidgey-back.webp", "./assets/pokemon-sprites/pidgey-front.webp"],
     base_hp: 9,
     moves: ["GUST", "SAND ATTACK", "QUICK ATTACK", "TACKLE"]
   },
   {
     name: "RATTATA",
-    sprite: ["./assets/pokemon-sprites/rattata-back.png", "./assets/pokemon-sprites/rattata-front.png"],
+    sprite: ["./assets/pokemon-sprites/rattata-back.webp", "./assets/pokemon-sprites/rattata-front.webp"],
     base_hp: 8,
     moves: ["QUICK ATTACK", "BITE", "TAIL WHIP", "TACKLE"]
   },
   {
     name: "MAGIKARP",
-    sprite: ["./assets/pokemon-sprites/magikarp-back.png", "./assets/pokemon-sprites/magikarp-front.png"],
+    sprite: ["./assets/pokemon-sprites/magikarp-back.webp", "./assets/pokemon-sprites/magikarp-front.webp"],
     base_hp: 20,
     moves: ["SPLASH", "SPLASH", "SPLASH", "HYPER BEAM"],
   },
   {
     name: "ABRA",
-    sprite: ["./assets/pokemon-sprites/abra-back.png", "./assets/pokemon-sprites/abra-front.png"],
+    sprite: ["./assets/pokemon-sprites/abra-back.webp", "./assets/pokemon-sprites/abra-front.webp"],
     base_hp: 11,
     moves: ["BODY SLAM", "TOXIC", "PSYWAVE", "TRI ATTACK"]
   },
   {
     name: "CATERPIE",
-    sprite: ["./assets/pokemon-sprites/caterpie-back.png", "./assets/pokemon-sprites/caterpie-front.png"],
+    sprite: ["./assets/pokemon-sprites/caterpie-back.webp", "./assets/pokemon-sprites/caterpie-front.webp"],
     base_hp: 7,
     moves: ["TACKLE", "STRING SHOT"]
   },
   {
     name: "CHARMANDER",
-    sprite: ["./assets/pokemon-sprites/charmander-back.png", "./assets/pokemon-sprites/charmander-front.png"],
+    sprite: ["./assets/pokemon-sprites/charmander-back.webp", "./assets/pokemon-sprites/charmander-front.webp"],
     base_hp: 11,
     moves: ["EMBER", "SCRATCH", "LEER", "SLASH"]
   },
   {
     name: "CLEFAIRY",
-    sprite: ["./assets/pokemon-sprites/clefairy-back.png", "./assets/pokemon-sprites/clefairy-front.png"],
+    sprite: ["./assets/pokemon-sprites/clefairy-back.webp", "./assets/pokemon-sprites/clefairy-front.webp"],
     base_hp: 10,
     moves: ["GROWL", "DOUBLESLAP", "POUND"]
   },
   {
     name: "MAGNEMITE",
-    sprite: ["./assets/pokemon-sprites/magnemite-back.png", "./assets/pokemon-sprites/magnemite-front.png"],
+    sprite: ["./assets/pokemon-sprites/magnemite-back.webp", "./assets/pokemon-sprites/magnemite-front.webp"],
     base_hp: 12,
     moves: ["THUNDERSHOCK", "TACKLE", "SONIC BOOM"]
 
   },
   {
     name: "NIDORAN♂",
-    sprite: ["./assets/pokemon-sprites/nidoran-back.png", "./assets/pokemon-sprites/nidoran-front.png"],
+    sprite: ["./assets/pokemon-sprites/nidoran-back.webp", "./assets/pokemon-sprites/nidoran-front.webp"],
     base_hp: 13,
     moves: ["HORN ATTACK", "TACKLE"]
   },
   {
     name: "OMANYTE",
-    sprite: ["./assets/pokemon-sprites/omanyte-back.png", "./assets/pokemon-sprites/omanyte-front.png"],
+    sprite: ["./assets/pokemon-sprites/omanyte-back.webp", "./assets/pokemon-sprites/omanyte-front.webp"],
     base_hp: 14,
     moves: ["WATER GUN", "LEER", "HYDRO PUMP"]
   },
   {
     name: "PARAS",
-    sprite: ["./assets/pokemon-sprites/paras-back.png", "./assets/pokemon-sprites/paras-front.png"],
+    sprite: ["./assets/pokemon-sprites/paras-back.webp", "./assets/pokemon-sprites/paras-front.webp"],
     base_hp: 10,
     moves: ["SCRATCH", "LEECH LIFE", "SPORE"]
   },
   {
     name: "PSYDUCK",
-    sprite: ["./assets/pokemon-sprites/psyduck-back.png", "./assets/pokemon-sprites/psyduck-front.png"],
+    sprite: ["./assets/pokemon-sprites/psyduck-back.webp", "./assets/pokemon-sprites/psyduck-front.webp"],
     base_hp: 11,
     moves: ["SCRATCH", "FURY SWIPES", "CONFUSION"]
   },
   {
     name: "RHYHORN",
-    sprite: ["./assets/pokemon-sprites/rhyhorn-back.png", "./assets/pokemon-sprites/rhyhorn-front.png"],
+    sprite: ["./assets/pokemon-sprites/rhyhorn-back.webp", "./assets/pokemon-sprites/rhyhorn-front.webp"],
     base_hp: 17,
     moves: ["STOMP", "HORN DRILL", "TAKE DOWN"]
   },
   {
     name: "SANDSHREW",
-    sprite: ["./assets/pokemon-sprites/sandshrew-back.png", "./assets/pokemon-sprites/sandshrew-front.png"],
+    sprite: ["./assets/pokemon-sprites/sandshrew-back.webp", "./assets/pokemon-sprites/sandshrew-front.webp"],
     base_hp: 12,
     moves: ["SCRATCH", "SLASH", "POISON STING"]
   },
   {
     name: "SEEL",
-    sprite: ["./assets/pokemon-sprites/seel-back.png", "./assets/pokemon-sprites/seel-front.png"],
+    sprite: ["./assets/pokemon-sprites/seel-back.webp", "./assets/pokemon-sprites/seel-front.webp"],
     base_hp: 14,
     moves: ["ICE BEAM", "HEADBUTT", "TAKE DOWN"]
   },
   {
     name: "SHELLDER",
-    sprite: ["./assets/pokemon-sprites/shellder-back.png", "./assets/pokemon-sprites/shellder-front.png"],
+    sprite: ["./assets/pokemon-sprites/shellder-back.webp", "./assets/pokemon-sprites/shellder-front.webp"],
     base_hp: 8,
     moves: ["CLAMP", "ICE BEAM", "TACKLE"]
   },
   {
     name: "VOLTORB",
-    sprite: ["./assets/pokemon-sprites/voltorb-back.png", "./assets/pokemon-sprites/voltorb-front.png"],
+    sprite: ["./assets/pokemon-sprites/voltorb-back.webp", "./assets/pokemon-sprites/voltorb-front.webp"],
     base_hp: 13,
     moves: ["SCREECH", "SWIFT", "THUNDERBOLT"]
   },
   {
     name: "VULPIX",
-    sprite: ["./assets/pokemon-sprites/vulpix-back.png", "./assets/pokemon-sprites/vulpix-front.png"],
+    sprite: ["./assets/pokemon-sprites/vulpix-back.webp", "./assets/pokemon-sprites/vulpix-front.webp"],
     base_hp: 10,
     moves: ["EMBER", "SCRATCH", "QUICK ATTACK"]
   }
