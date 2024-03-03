@@ -190,45 +190,34 @@ const gameScreen = [
   }
 ];
 
-function mainScreen() {
-  mainText.innerText = gameScreen[0]["main_text"];
-
-  action.innerText = gameScreen[0]["button_text"][0];
-  action.onclick = function () {
-    game();
-  };
-
-  option.innerText = gameScreen[0]["button_text"][1];
-  option.onclick = function () {
-    about();
-  };
-}
-
 const randomNumberUser = Math.floor(Math.random() * pokemon.length);
 const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
 
 
 function mainScreen() {
+  action.removeAttribute("onclick");
+  option.removeAttribute("onclick");
+  
   mainText.innerText = gameScreen[0]["main_text"];
 
   action.innerText = gameScreen[0]["button_text"][0];
-  action.onclick = function () {
-    game();
-  };
+  action.setAttribute("onclick", "game()");
 
   option.innerText = gameScreen[0]["button_text"][1];
-  option.onclick = function () {
-    about();
-  };
+  option.setAttribute("onclick", "about()");
 }
+
 function about() {
   mainText.innerText = gameScreen[1]["main_text"];
   action.innerText = gameScreen[1]["button_text"][0];
+
   action.removeAttribute("onclick");
+  option.removeAttribute("onclick");
 
   option.innerText = gameScreen[1]["button_text"][1];
+
   option.setAttribute("onclick", "mainScreen()");
-};
+}
 
 function game() {
 
