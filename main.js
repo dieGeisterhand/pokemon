@@ -92,6 +92,12 @@ const gameScreen = [
     main_text: [`What would ${pokemon} do?`, `${pokemon} used ${pokemon}!`, `You used ${pokemon}`],
     button_text: ["ATTACK", "ITEM"],
     button_functions: [attack, item]
+  },
+  {
+    name: "game over",
+    main_text: [`Game over.`],
+    button_text: ["RETURN", "RETURN"],
+    button_functions: [gameOver, gameOver]
   }
 ];
 
@@ -183,16 +189,22 @@ function opponentTurn() {
 
     currentUserHp.innerText = newHealth;
 
-    if (newHealth === 0) {
-      mainText.innerText = `${pokemon[randomNumberUser]["name"]} fainted!`;
-      userPokemonImg.removeAttribute("src");
-    } 
-    return;
+    return newHealth;
   }
 
-  setTimeout(damageCalc, 2000);
-  setTimeout(nextTurn, 4000);
+  setTimeout(damageCalc, 1000);
 
+  setTimeout(() => {
+    const resultHealth = damageCalc();
+
+    if (resultHealth === 0) {
+      mainText.innerText = `${pokemon[randomNumberUser]["name"]} faints!`;
+      userPokemonImg.removeAttribute("src");
+      setTimeout(gameOver, 2000);
+    } else if (resultHealth > 1) {
+      setTimeout(nextTurn, 2000);
+    }
+  }, 1000);
 };
 
 function attack() {
@@ -210,18 +222,23 @@ function attack() {
     let newHealth = currentHealth - (Math.floor(Math.random() * 3) + 1);
     
     newHealth = Math.max(newHealth, 0);
-
+  
     currentOpponentHp.innerText = newHealth;
-
-    if (newHealth === 0) {
-      mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} fainted!`;
-      opponentPokemonImg.removeAttribute("src");
-    } 
-    return;
+  
+    return newHealth;
   }
 
-  setTimeout(damageCalc, 2000);
-  setTimeout(nextTurn, 4000);
+  setTimeout(() => {
+    const resultHealth = damageCalc();
+
+    if (resultHealth === 0) {
+      mainText.innerText = `${pokemon[randomNumberUser]["name"]} faints!`;
+      userPokemonImg.removeAttribute("src");
+      setTimeout(gameOver, 2000);
+    } else if (resultHealth > 1) {
+      setTimeout(nextTurn, 2000);
+    }
+  }, 1000);
 };
 
 
@@ -239,14 +256,22 @@ function item() {
   
     newHealth = Math.min(newHealth, pokemon[randomNumberUser]["base_hp"]);
     currentUserHp.innerText = newHealth;
+
+    return;
   };
 
   setTimeout(healthRecovery, 2000);
   setTimeout(nextTurn, 4000);
 };
 
+function gameOver() {
+  mainText.innerText = gameScreen[3]["main_text"];
+  action.innerText = gameScreen[3]["button_text"][0];
+  option.innerText = gameScreen[3]["button_text"][1];
 
-
+  action.setAttribute("onclick", "window.location.reload()");
+  option.setAttribute("onclick", "window.location.reload()");
+}
 
 window.onload = function() {
   mainScreen();
