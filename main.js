@@ -290,7 +290,7 @@ function opponentTurn() {
     console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberOpponent]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} splashed around!`
-      setTimeout(nextTurn, 2000);
+      setTimeout(nextTurn, 1500);
     } else {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} takes damage!`;
 
@@ -311,11 +311,12 @@ function opponentTurn() {
     if (resultHealth === 0) {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} faints!`;
       userPokemonImg.removeAttribute("src");
-      setTimeout(gameOver, 2000);
+      console.log("player fainted");
+      setTimeout(gameOver, 1500);
     } else if (resultHealth >= 1) {
-      setTimeout(nextTurn, 2000);
+      setTimeout(nextTurn, 1500);
     }
-  }, 1000);
+  }, 1500);
 };
 
 function attack() {
@@ -332,7 +333,7 @@ function attack() {
     console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberUser]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} splashed around!`
-      setTimeout(nextTurn, 2000);
+      setTimeout(nextTurn, 1500);
     } else {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} takes damage!`;
 
@@ -353,11 +354,12 @@ function attack() {
     if (resultHealth === 0) {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} faints!`;
       opponentPokemonImg.removeAttribute("src");
-      setTimeout(gameOver, 2000);
+      console.log("opponent fainted");
+      setTimeout(gameOver, 1500);
     } else if (resultHealth >= 1) {
-      setTimeout(nextTurn, 2000);
+      setTimeout(nextTurn, 1500);
     }
-  }, 1000);
+  }, 1500);
 };
 
 function item() {
@@ -377,8 +379,8 @@ function item() {
     return;
   };
 
-  setTimeout(healthRecovery, 2000);
-  setTimeout(nextTurn, 4000);
+  setTimeout(healthRecovery, 1500);
+  setTimeout(nextTurn, 3000);
 };
 
 function gameOver() {
