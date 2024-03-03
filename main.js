@@ -69,7 +69,7 @@ const itemList = [
   },
   {
     name: "HERBAL MEDICINE",
-    points: 2.5
+    points: 2
   }
 ];
 
@@ -166,7 +166,7 @@ function userTurn() {
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
 };
 
-const dmgRandom = Math.floor(Math.random() * 4) + 1
+const dmgRandom = Math.floor(Math.random() * 3) + 1
 
 function opponentTurn() {
   action.innerText = "";
@@ -174,25 +174,29 @@ function opponentTurn() {
   option.innerText = "";
   option.removeAttribute("onclick");
 
-  const move = Math.floor(Math.random() * itemList.length);
+  const move = Math.floor(Math.random() * 4);
   mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} used ${pokemon[randomNumberOpponent]["moves"][move]}!`;
 
   
 
   function damageCalc() {
-    mainText.innerText = `${pokemon[randomNumberUser]["name"]} takes damage!`;
 
-    let currentHealth = Number(currentUserHp.innerText);
-    let newHealth = currentHealth - (Math.floor(Math.random() * 3) + 1);
+    if (pokemon[randomNumberOpponent]["moves"][move] === "SPLASH") {
+      mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} splashed around!`
+      setTimeout(nextTurn, 2000);
+    } else {
+      mainText.innerText = `${pokemon[randomNumberUser]["name"]} takes damage!`;
+
+      let currentHealth = Number(currentUserHp.innerText);
+      let newHealth = currentHealth - dmgRandom;
+      
+      newHealth = Math.max(newHealth, 0);
     
-    newHealth = Math.max(newHealth, 0);
-
-    currentUserHp.innerText = newHealth;
-
-    return newHealth;
+      currentUserHp.innerText = newHealth;
+    
+      return newHealth;
+    }
   }
-
-  setTimeout(damageCalc, 1000);
 
   setTimeout(() => {
     const resultHealth = damageCalc();
@@ -208,7 +212,7 @@ function opponentTurn() {
 };
 
 function attack() {
-  const move = Math.floor(Math.random() * itemList.length);
+  const move = Math.floor(Math.random() * 4);
   mainText.innerText = `${pokemon[randomNumberUser]["name"]} used ${pokemon[randomNumberUser]["moves"][move]}!`;
   action.innerText = "";
   action.removeAttribute("onclick");
@@ -216,24 +220,31 @@ function attack() {
   option.removeAttribute("onclick");
 
   function damageCalc() {
-    mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} takes damage!`;
 
-    let currentHealth = Number(currentOpponentHp.innerText);
-    let newHealth = currentHealth - (Math.floor(Math.random() * 3) + 1);
+    if (pokemon[randomNumberUser]["moves"][move] === "SPLASH") {
+      mainText.innerText = `${pokemon[randomNumberUser]["name"]} splashed around!`
+      setTimeout(nextTurn, 2000);
+    } else {
+      mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} takes damage!`;
+
+      let currentHealth = Number(currentOpponentHp.innerText);
+      let newHealth = currentHealth - dmgRandom;
+      
+      newHealth = Math.max(newHealth, 0);
     
-    newHealth = Math.max(newHealth, 0);
-  
-    currentOpponentHp.innerText = newHealth;
-  
-    return newHealth;
+      currentOpponentHp.innerText = newHealth;
+    
+      return newHealth;
+    }
   }
+
 
   setTimeout(() => {
     const resultHealth = damageCalc();
 
     if (resultHealth === 0) {
-      mainText.innerText = `${pokemon[randomNumberUser]["name"]} faints!`;
-      userPokemonImg.removeAttribute("src");
+      mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} faints!`;
+      opponentPokemonImg.removeAttribute("src");
       setTimeout(gameOver, 2000);
     } else if (resultHealth > 1) {
       setTimeout(nextTurn, 2000);
