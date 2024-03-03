@@ -258,7 +258,7 @@ function nextTurn() {
   } else if (turn === 1) {
     turn -= 1;
     console.log("opponent turn end");
-    console.log("user turn start");
+    console.log(https://diegeisterhand.github.io/pokemon/"user turn start");
     userTurn();
   }
 };
@@ -363,6 +363,11 @@ function attack() {
 };
 
 function item() {
+  action.innerText = "";
+  action.removeAttribute("onclick");
+  option.innerText = "";
+  option.removeAttribute("onclick");
+  
   const randomNumber = Math.floor(Math.random() * itemList.length);
   mainText.innerText = `You've used ${itemList[randomNumber]["name"]}!`;
 
