@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter by Letter Display</title>
+</head>
+<body>
+
+<p id="sentence"></p>
+
+<script>
+  // Your sentence
+  const sentence = "Hello, World!";
+
+  // Get the element where you want to display the sentence
+  const sentenceElement = document.getElementById('sentence');
+
+  // Function to display the sentence one letter at a time
+  function displayLetters() {
+    let index = 0;
+    const intervalId = setInterval(() => {
+      // Display one letter at a time
+      sentenceElement.textContent += sentence[index];
+
+      // Move to the next letter
+      index++;
+
+      // Check if all letters have been displayed
+      if (index === sentence.length) {
+        clearInterval(intervalId); // Stop the interval
+      }
+    }, 50); // Adjust the interval duration (in milliseconds) as needed
+  }
+
+  // Call the function to start displaying the sentence
+  displayLetters();
+</script>
+
+</body>
+</html>
