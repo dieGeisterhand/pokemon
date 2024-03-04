@@ -277,7 +277,7 @@ function opponentTurn() {
 
   function damageCalc() {
     console.log("opponent-dmg-calc");
-    const dmgRandom = Math.floor(Math.random() * 3) + 1;
+    const dmgRandom = Math.floor(Math.random() * 3) + 2;
     console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberOpponent]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} splashed around!`
