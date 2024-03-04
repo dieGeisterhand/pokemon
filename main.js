@@ -320,7 +320,7 @@ function attack() {
 
   function damageCalc() {
     console.log("user-dmg-calc");
-    const dmgRandom = Math.floor(Math.random() * 3) + 1;
+    const dmgRandom = Math.floor(Math.random() * 3) + 2;
     console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberUser]["moves"][move] === "SPLASH") {
       mainText.innerText = `${pokemon[randomNumberUser]["name"]} splashed around!`
