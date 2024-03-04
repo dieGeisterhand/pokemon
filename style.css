@@ -256,7 +256,7 @@ a {
   bottom: 1.5%;
   font-size: 3.5vh;
   font-weight: bold;
-  border: 0.4vh solid var(--body-text);
+  border: 0.6vh solid var(--body-text);
   border-radius: 50vh;
 }
 
