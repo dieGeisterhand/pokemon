@@ -13,11 +13,10 @@ const consoleColor = document.documentElement;
 //setting value of --body-color css variable
 consoleColor.style.setProperty('--body-color', colors[randomColor]);
 
-
-
+// determine who moves first
 let turn = Math.round(Math.random());
 
-// game functions
+// set of variables to manipulate html elements using js
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 
@@ -36,10 +35,7 @@ const computerHpTitle = document.getElementById("computer-hp-text");
 const currentOpponentHp = document.getElementById("computer-current-hp");
 const computerMaxHp = document.getElementById("computer-max-hp");
 
-// game audio file
-const audio = new Audio("./assets/wild-pokemon-battle.mp3")
-
-
+// array of objects containing pokemon name, sprite being displayed, hp value and their moveset / add more by adding another object and following the same key-value pair structure
 const pokemon = [
   {
     name: "PIDGEY",
@@ -151,6 +147,7 @@ const pokemon = [
   }
 ];
 
+// array of objects containing the in-game healing items
 const itemList = [
   {
     name: "POTION",
@@ -166,6 +163,7 @@ const itemList = [
   }
 ];
 
+// different game screens - main, about, game, game over
 const gameScreen = [
   {
     name: "main screen",
@@ -191,9 +189,15 @@ const gameScreen = [
   }
 ];
 
+// pick a pokemon for user
 const randomNumberUser = Math.floor(Math.random() * pokemon.length);
+
+// pick a pokemon for computer
 const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
 
+// onclick attribute is removed and reassigned multiple times throughout the following screens to avoid any strange behavior
+
+// main screen of the game / what is displayed on refresh
 function mainScreen() {
   action.removeAttribute("onclick");
   option.removeAttribute("onclick");
@@ -207,6 +211,7 @@ function mainScreen() {
   option.setAttribute("onclick", "about()");
 }
 
+// about screen / displays game instructions
 function about() {
   mainText.innerText = gameScreen[1]["main_text"];
   action.innerText = gameScreen[1]["button_text"][0];
@@ -219,30 +224,33 @@ function about() {
   option.setAttribute("onclick", "mainScreen()");
 }
 
+// this is the game itself - where moves are pulled from the pokemon array, damage calculated and turns take place
 function game() {
   action.innerText = "";
   action.removeAttribute("onclick");
   option.innerText = "";
   option.removeAttribute("onclick");
-
+  // set the sprite for the appropriate random pokemon (user)
   userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
+  // set sprite for appropriate random pokemon (computer)
   opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
-  
+  // display "HP" text on screen (set to display:none on css file)
   userHpTitle.style.display = "flex";
   computerHpTitle.style.display = "flex";
-
+  // populate the user information on screen based on the random number generated for pokemon
   userName.innerText = pokemon[randomNumberUser]["name"];
   currentUserHp.innerText = pokemon[randomNumberUser]["base_hp"];
   userMaxHp.innerText = ` / ${pokemon[randomNumberUser]["base_hp"]}`;
-
+  // populate computer information on screen based on the random number generated for pokemon
   computerName.innerText = pokemon[randomNumberOpponent]["name"];
   currentOpponentHp.innerText = pokemon[randomNumberOpponent]["base_hp"];
   computerMaxHp.innerText = ` / ${pokemon[randomNumberOpponent]["base_hp"]}`;
-  
+  // game start message / determine turn order
   mainText.innerText = `A wild ${pokemon[randomNumberOpponent]["name"]} appeared!`
   setTimeout(nextTurn, 1500);
 };
 
+// this function is used to alternate between computer and player turns / messages are logged in case something isn't working right
 function nextTurn() {
   if (turn === 0) {
     turn += 1;
@@ -258,6 +266,7 @@ function nextTurn() {
   }
 };
 
+// user turn / functions are assigned to each button
 function userTurn() {
   action.innerText = gameScreen[2]["button_text"][0];
   action.setAttribute("onclick", "attack()");
@@ -267,21 +276,23 @@ function userTurn() {
 
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
 };
-
+// computer turn / functions above, text and onclick attribute are removed from the buttons
 function opponentTurn() {
   action.innerText = "";
   action.removeAttribute("onclick");
   option.innerText = "";
   option.removeAttribute("onclick");
-
+  // pick a random move from moveset
   const move = Math.floor(Math.random() * pokemon[randomNumberOpponent]["moves"].length);
+  // display on screen the move being used
   mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} used ${pokemon[randomNumberOpponent]["moves"][move]}!`;
-
+  // calculate the damage caused by this action
   function damageCalc() {
     console.log("opponent-dmg-calc");
     const dmgRandom = Math.floor(Math.random() * 3) + 2;
     console.log(`damage inflicted: ${dmgRandom}`);
     if (pokemon[randomNumberOpponent]["moves"][move] === "SPLASH") {
+      // if pokemon uses move 'splash' (currently only magikarp), splash does nothing
       mainText.innerText = `${pokemon[randomNumberOpponent]["name"]} splashed around!`
       setTimeout(nextTurn, 1500);
     } else {
@@ -297,7 +308,7 @@ function opponentTurn() {
       return newHealth;
     }
   }
-
+  // faint check using value returned above
   setTimeout(() => {
     const resultHealth = damageCalc();
 
@@ -311,7 +322,7 @@ function opponentTurn() {
     }
   }, 1500);
 };
-
+// function for user turn - pulls a random move from moveset and calculates the inflicted damage
 function attack() {
   const move = Math.floor(Math.random() * pokemon[randomNumberUser]["moves"].length);
   mainText.innerText = `${pokemon[randomNumberUser]["name"]} used ${pokemon[randomNumberUser]["moves"][move]}!`;
@@ -319,7 +330,7 @@ function attack() {
   action.removeAttribute("onclick");
   option.innerText = "";
   option.removeAttribute("onclick");
-
+  // this needs to be reworked - it functions the same as computer function - should use one function for both instead?
   function damageCalc() {
     console.log("user-dmg-calc");
     const dmgRandom = Math.floor(Math.random() * 3) + 2;
@@ -354,7 +365,7 @@ function attack() {
     }
   }, 1500);
 };
-
+// health item function
 function item() {
   action.innerText = "";
   action.removeAttribute("onclick");
@@ -380,7 +391,7 @@ function item() {
   setTimeout(healthRecovery, 1500);
   setTimeout(nextTurn, 3000);
 };
-
+// screen to display on user or computer faint / reloads page / back to main screen
 function gameOver() {
   mainText.innerText = gameScreen[3]["main_text"];
   action.innerText = gameScreen[3]["button_text"][0];
@@ -390,10 +401,7 @@ function gameOver() {
   option.setAttribute("onclick", "window.location.reload()");
 }
 
-function gameMusic() {
-  audio.play();
-}
-
+// display main screen on load
 window.onload = function() {
   mainScreen();
 };
