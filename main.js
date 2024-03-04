@@ -13,10 +13,11 @@ const consoleColor = document.documentElement;
 //setting value of --body-color css variable
 consoleColor.style.setProperty('--body-color', colors[randomColor]);
 
+
+
+let turn = Math.round(Math.random());
+
 // game functions
-
-let turn = 0;
-
 const action = document.getElementById("left-button");
 const option = document.getElementById("right-button");
 
@@ -34,6 +35,10 @@ const computerName = document.getElementById("computer-name");
 const computerHpTitle = document.getElementById("computer-hp-text");
 const currentOpponentHp = document.getElementById("computer-current-hp");
 const computerMaxHp = document.getElementById("computer-max-hp");
+
+// game audio file
+const audio = new Audio("./assets/wild-pokemon-battle.mp3")
+
 
 const pokemon = [
   {
@@ -83,7 +88,6 @@ const pokemon = [
     sprite: ["./assets/pokemon-sprites/magnemite-back.webp", "./assets/pokemon-sprites/magnemite-front.webp"],
     base_hp: 12,
     moves: ["THUNDERSHOCK", "TACKLE", "SONIC BOOM"]
-    button_functions: [gameOver, gameOver]
   },
   {
     name: "NIDORAN♂",
@@ -154,11 +158,11 @@ const itemList = [
   },
   {
     name: "BERRY",
-    points: 5
+    points: 8
   },
   {
     name: "HERBAL MEDICINE",
-    points: 2
+    points: 3
   }
 ];
 
@@ -214,9 +218,14 @@ function about() {
 }
 
 function game() {
+  action.innerText = "";
+  action.removeAttribute("onclick");
+  option.innerText = "";
+  option.removeAttribute("onclick");
+
   userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
   opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
-
+  
   userHpTitle.style.display = "flex";
   computerHpTitle.style.display = "flex";
 
@@ -227,7 +236,9 @@ function game() {
   computerName.innerText = pokemon[randomNumberOpponent]["name"];
   currentOpponentHp.innerText = pokemon[randomNumberOpponent]["base_hp"];
   computerMaxHp.innerText = ` / ${pokemon[randomNumberOpponent]["base_hp"]}`;
-  userTurn();
+  
+  mainText.innerText = `A wild ${pokemon[randomNumberOpponent]["name"]} appeared!`
+  setTimeout(nextTurn, 1500);
 };
 
 function nextTurn() {
@@ -352,8 +363,8 @@ function item() {
   mainText.innerText = `You've used ${itemList[randomNumber]["name"]}!`;
 
   function healthRecovery() {
-    const healingItem = itemList[randomNumber]["points"] * Math.floor(Math.random() * max) + 1;
-    mainText.innerText = `${pokemon[randomNumberUser]["name"]} recovered ${itemList[randomNumber]["points"]} HP!`;
+    const healingItem = Math.floor(itemList[randomNumber]["points"] * Math.random() + 1);
+    mainText.innerText = `${pokemon[randomNumberUser]["name"]} recovered ${healingItem} HP!`;
 
     let currentHealth = Number(currentUserHp.innerText);
     let newHealth = currentHealth + healingItem;
@@ -375,6 +386,10 @@ function gameOver() {
 
   action.setAttribute("onclick", "window.location.reload()");
   option.setAttribute("onclick", "window.location.reload()");
+}
+
+function gameMusic() {
+  audio.play();
 }
 
 window.onload = function() {
