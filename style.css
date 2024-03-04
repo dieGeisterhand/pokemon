@@ -11,6 +11,11 @@
 }
 
 body {
+  background-color: black;
+  margin: 0;
+}
+
+.console {
   background-color: var(--body-color);
   display: flex;
   justify-content: space-between;
@@ -30,7 +35,7 @@ a {
 .empty-space {
   display: flex;
   z-index: 1;
-  width: 30%; 
+  width: 20%; 
   height: 100%;
   background-color: black;
 }
