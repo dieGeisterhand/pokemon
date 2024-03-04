@@ -5,11 +5,6 @@
   --highlight: rgba(255, 255, 255, 0.1);
   --body-text:rgba(22, 22, 22, 0.5);
 }
-
-a {
-  text-decoration: none;
-  color: var(--screen);
-}
 @font-face {
   font-family: PokemonGb-RAeo;
   src: url(./assets/font/PokemonGb-RAeo.ttf);
@@ -25,6 +20,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
   font-size: 2vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--screen);
 }
 
 .empty-space {
