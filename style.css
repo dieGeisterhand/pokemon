@@ -30,7 +30,7 @@ a {
 .empty-space {
   display: flex;
   z-index: 1;
-  width: 20%; 
+  width: 30%; 
   height: 100%;
   background-color: black;
 }
