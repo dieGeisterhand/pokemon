@@ -131,8 +131,8 @@ a {
   position: absolute;
   color: var(--screen);
   font-style: italic;
-  bottom: 12%;
-  font-size: 4vh;
+  bottom: 9.5%;
+  font-size: 6vh;
   font-weight: bold;
 }
 
@@ -254,7 +254,7 @@ a {
   display: flex;
   position: absolute;
   bottom: 1.5%;
-  font-size: 3vh;
+  font-size: 3.5vh;
   font-weight: bold;
   border: 0.4vh solid var(--body-text);
   border-radius: 50vh;
