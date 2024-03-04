@@ -177,6 +177,8 @@ const gameScreen = [
     main_text: "This is POKÉMON BATTLE. Use the ATTACK button to make your POKÉMON use a random attack. With ITEM, you can use a random ITEM to heal them. Your opponent, your POKÉMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!",
     button_text: ["", "RETURN"],
   },
+
+  // FIX THIS UNUSED CODE BELOW
   {
     name: "game",
     main_text: [`What would ${pokemon} do?`, `${pokemon} used ${pokemon}!`, `You used ${pokemon}`],
