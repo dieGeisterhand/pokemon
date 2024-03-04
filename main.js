@@ -83,7 +83,7 @@ const pokemon = [
     sprite: ["./assets/pokemon-sprites/magnemite-back.webp", "./assets/pokemon-sprites/magnemite-front.webp"],
     base_hp: 12,
     moves: ["THUNDERSHOCK", "TACKLE", "SONIC BOOM"]
-
+    button_functions: [gameOver, gameOver]
   },
   {
     name: "NIDORAN♂",
@@ -145,7 +145,6 @@ const pokemon = [
     base_hp: 10,
     moves: ["EMBER", "SCRATCH", "QUICK ATTACK"]
   }
-
 ];
 
 const itemList = [
@@ -168,31 +167,26 @@ const gameScreen = [
     name: "main screen",
     main_text: "POKÉMON BATTLE",
     button_text: ["PLAY", "ABOUT"],
-    button_functions: [game, about]
   },
   {
     name: "about",
     main_text: "This is POKÉMON BATTLE. Use the ATTACK button to make your POKÉMON use a random attack. With ITEM, you can use a random ITEM to heal them. Your opponent, your POKÉMON and their movesets are randomly chosen. See how well you fare against the COMPUTER!",
     button_text: ["", "RETURN"],
-    button_functions: [null, mainScreen]
   },
   {
     name: "game",
     main_text: [`What would ${pokemon} do?`, `${pokemon} used ${pokemon}!`, `You used ${pokemon}`],
     button_text: ["ATTACK", "ITEM"],
-    button_functions: [attack, item]
   },
   {
     name: "game over",
     main_text: [`Game over.`],
     button_text: ["RETURN", "RETURN"],
-    button_functions: [gameOver, gameOver]
   }
 ];
 
 const randomNumberUser = Math.floor(Math.random() * pokemon.length);
 const randomNumberOpponent = Math.floor(Math.random() * pokemon.length);
-
 
 function mainScreen() {
   action.removeAttribute("onclick");
@@ -220,7 +214,6 @@ function about() {
 }
 
 function game() {
-
   userPokemonImg.setAttribute("src", pokemon[randomNumberUser]["sprite"][0]);
   opponentPokemonImg.setAttribute("src", pokemon[randomNumberOpponent]["sprite"][1]);
 
@@ -261,8 +254,6 @@ function userTurn() {
 
   mainText.innerText = `What would ${pokemon[randomNumberUser]["name"]} do?`
 };
-
-
 
 function opponentTurn() {
   action.innerText = "";
@@ -361,7 +352,7 @@ function item() {
   mainText.innerText = `You've used ${itemList[randomNumber]["name"]}!`;
 
   function healthRecovery() {
-    const healingItem = itemList[randomNumber]["points"];
+    const healingItem = itemList[randomNumber]["points"] * Math.floor(Math.random() * max) + 1;
     mainText.innerText = `${pokemon[randomNumberUser]["name"]} recovered ${itemList[randomNumber]["points"]} HP!`;
 
     let currentHealth = Number(currentUserHp.innerText);
