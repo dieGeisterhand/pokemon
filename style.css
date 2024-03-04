@@ -68,7 +68,6 @@ a {
   padding: 0.5% 0 0 0;
   font-size: 2.5vh;
   font-weight: bold;
-  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.25);
 }
 
 .screen-bezel {
@@ -250,3 +249,24 @@ a {
 #hp-text {
   display: none;
 }
+
+.faketendo {
+  display: flex;
+  position: absolute;
+  bottom: 1.5%;
+  font-size: 3vh;
+  font-weight: bold;
+  border: 0.4vh solid var(--body-text);
+  border-radius: 50vh;
+}
+
+.faketendo p {
+  margin: 0;
+  color: var(--body-text);
+  padding: 1vh 2vh 1vh 2vh !important;
+}
+
+.faketendo a {
+  padding: 0;
+}
+
